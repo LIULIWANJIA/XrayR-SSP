@@ -87,6 +87,30 @@ install_acme() {
 }
 
 install_XrayR() {
+    echo "请设定对接地址"
+    echo ""
+    read -p "请输入对接地址:" apihost
+    [ -z "${apihost}" ]
+    echo "---------------------------"
+    echo "您设定的对接地址为 ${apihost}"
+    echo "---------------------------"
+    echo ""
+    echo "请先设定对接Key"
+    echo ""
+    read -p "请输入对接Key:" apikey
+    [ -z "${apikey}" ]
+    echo "---------------------------"
+    echo "您设定的对接Key为 ${apikey}"
+    echo "---------------------------"
+    echo ""
+    echo "请设定节点ID"
+    echo ""
+    read -p "请输入节点ID:" nodeid
+    [ -z "${nodeid}" ]
+    echo "---------------------------"
+    echo "您设定的节点序号为 ${nodeid}"
+    echo "---------------------------"
+    echo ""
     install_base
     install_acme
     
@@ -164,32 +188,7 @@ install_XrayR() {
 
     # Writing json
     echo "正在尝试写入配置文件..."
-    wget https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/config.yml -O /etc/XrayR/config.yml
-    echo "请设定对接地址"
-    echo ""
-    read -p "请输入对接地址:" apihost
-    [ -z "${apihost}" ]
-    echo "---------------------------"
-    echo "您设定的对接地址为 ${apihost}"
-    echo "---------------------------"
-    echo ""
-    echo "请先设定对接Key"
-    echo ""
-    read -p "请输入对接Key:" apikey
-    [ -z "${apikey}" ]
-    echo "---------------------------"
-    echo "您设定的对接Key为 ${apikey}"
-    echo "---------------------------"
-    echo ""
-    echo "请设定节点ID"
-    echo ""
-    read -p "请输入节点ID:" nodeid
-    [ -z "${nodeid}" ]
-    echo "---------------------------"
-    echo "您设定的节点序号为 ${nodeid}"
-    echo "---------------------------"
-    echo ""
-    
+    wget https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/config.yml -O /etc/XrayR/config.yml    
     sed -i "s/ApiHost:.*/ApiHost: '${apihost}'/g" /etc/XrayR/config.yml
     sed -i "s/ApiKey:.*/ApiKey: '${apikey}'/g" /etc/XrayR/config.yml
     sed -i "s/NodeID:.*/NodeID: ${nodeid}/g" /etc/XrayR/config.yml
