@@ -3,9 +3,14 @@
 
 bash <(curl -Lso- https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/install.sh)
 
+对接完成之后
+
+手动编辑 /etc/XrayR/config.yml
+修改APIHOST和APIKey
+
+指令
+vi /etc/XrayR/config.yml
 
 
+修改完成后执行XrayR restart即可对接
 
-无脑操作，适用于SSpanel
-其他面板对接请在对接完成后，手动修改 /etc/XrayR/config.yml里的面板类型
-再执行XrayR restart
