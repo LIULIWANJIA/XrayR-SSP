@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# bash <(curl -Lso- https://blog.liulixin.top/bash/ass/sspanel/liulisusu/XrayR/install.sh)
+# bash <(curl -Lso- https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/install.sh)
 
 red='\033[0;31m'
 green='\033[0;32m'
