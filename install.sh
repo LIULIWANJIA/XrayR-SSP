@@ -116,10 +116,10 @@ install_XrayR() {
         #fi
         #echo -e "检测到 XrayR 最新版本：${last_version}，开始安装"
         #wget -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux-64.zip https://github.com/XrayR-project/XrayR/releases/download/${last_version}/XrayR-linux-64.zip
-        #国内源下载
-        wget -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://blog.liulixin.top/bash/ass/sspanel/liulisusu/XrayR/XrayR-linux-64.zip
+        #github源下载
+        wget -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/LIULIWANJIA/XrayR-SSP/raw/main/XrayR-linux-64.zip
         
-        #wget -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://blog.liulixin.top/bash/ass/sspanel/liulisusu/XrayR/XrayR-linux-arm64-v8a.zip.zip
+        #wget -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/LIULIWANJIA/XrayR-SSP/raw/main/XrayR-linux-arm64-v8a.zip.zip
         if [[ $? -ne 0 ]]; then
             echo -e "${red}下载 XrayR 失败，请确保你的服务器能够下载 Github 的文件${plain}"
             exit 1
@@ -141,7 +141,7 @@ install_XrayR() {
     mkdir /etc/XrayR/ -p
     rm /etc/systemd/system/XrayR.service -f
     
-    file="https://blog.liulixin.top/bash/ass/sspanel/liulisusu/XrayR/XrayR.service"
+    file="https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/XrayR.service"
     wget -N --no-check-certificate -O /etc/systemd/system/XrayR.service ${file}
     systemctl daemon-reload
     systemctl stop XrayR
@@ -170,7 +170,7 @@ install_XrayR() {
         cp dns.json /etc/XrayR/
     fi
     
-    curl -o /usr/bin/XrayR -Ls https://blog.liulixin.top/bash/ass/sspanel/liulisusu/XrayR/XrayR.sh
+    curl -o /usr/bin/XrayR -Ls https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/XrayR.sh
     chmod +x /usr/bin/XrayR
     
 #    echo "设定节点ID"
@@ -184,7 +184,7 @@ install_XrayR() {
     
     # Writing json
     echo "正在尝试写入配置文件..."
-    wget https://blog.liulixin.top/bash/ass/sspanel/liulisusu/XrayR/config.yml -O /etc/XrayR/config.yml
+    wget https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/config.yml -O /etc/XrayR/config.yml
     sed -i "s/NodeID:.*/NodeID: ${node_id}/g" /etc/XrayR/config.yml
     echo ""
     echo "写入完成，正在尝试重启XrayR服务..."
