@@ -87,8 +87,23 @@ install_acme() {
 }
 
 install_XrayR() {
-    
-    echo "请先设定节点ID"
+    echo "请设定对接地址"
+    echo ""
+    read -p "请输入对接地址:" api_host
+    [ -z "${api_host}" ]
+    echo "---------------------------"
+    echo "您设定的对接地址为 ${api_host}"
+    echo "---------------------------"
+    echo ""
+    echo "请先设定对接Key"
+    echo ""
+    read -p "请输入对接Key:" api_hey
+    [ -z "${api_hey}" ]
+    echo "---------------------------"
+    echo "您设定的对接Key为 ${api_hey}"
+    echo "---------------------------"
+    echo ""
+    echo "请设定节点ID"
     echo ""
     read -p "请输入节点ID:" node_id
     [ -z "${node_id}" ]
@@ -172,19 +187,12 @@ install_XrayR() {
     
     curl -o /usr/bin/XrayR -Ls https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/XrayR.sh
     chmod +x /usr/bin/XrayR
-    
-#    echo "设定节点ID"
-#    echo ""
-#    read -p "请输入节点ID:" node_id
-#    [ -z "${node_id}" ]
-#    echo "---------------------------"
-#    echo "您设定的节点序号为 ${node_id}"
-#    echo "---------------------------"
-#    echo ""
-    
+
     # Writing json
     echo "正在尝试写入配置文件..."
     wget https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/config.yml -O /etc/XrayR/config.yml
+    sed -i "s/ApiHost:.*/ApiHost: ${api_host}/g" /etc/XrayR/config.yml
+    sed -i "s/ApiKey:.*/ApiKey: ${api_key}/g" /etc/XrayR/config.yml
     sed -i "s/NodeID:.*/NodeID: ${node_id}/g" /etc/XrayR/config.yml
     echo ""
     echo "写入完成，正在尝试重启XrayR服务..."
@@ -200,7 +208,23 @@ install_XrayR() {
 }
 
 update_XrayR(){
-    echo "设定节点ID"
+    echo "请设定对接地址"
+    echo ""
+    read -p "请输入对接地址:" api_host
+    [ -z "${api_host}" ]
+    echo "---------------------------"
+    echo "您设定的对接地址为 ${api_host}"
+    echo "---------------------------"
+    echo ""
+    echo "请先设定对接Key"
+    echo ""
+    read -p "请输入对接Key:" api_hey
+    [ -z "${api_hey}" ]
+    echo "---------------------------"
+    echo "您设定的对接Key为 ${api_hey}"
+    echo "---------------------------"
+    echo ""
+    echo "请设定节点ID"
     echo ""
     read -p "请输入节点ID:" node_id
     [ -z "${node_id}" ]
@@ -209,6 +233,8 @@ update_XrayR(){
     echo "---------------------------"
     echo ""
     
+    sed -i "s/ApiHost:.*/ApiHost: ${api_host}/g" /etc/XrayR/config.yml
+    sed -i "s/ApiKey:.*/ApiKey: ${api_key}/g" /etc/XrayR/config.yml
     sed -i "s/NodeID:.*/NodeID: ${node_id}/g" /etc/XrayR/config.yml
     echo ""
     echo "写入完成，正在尝试重启XrayR服务..."
