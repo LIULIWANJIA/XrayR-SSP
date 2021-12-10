@@ -270,7 +270,7 @@ while true
 do
 echo  " "
 echo  " "
-echo  "XrayR 一键对接脚本 v1.0"
+echo  "XrayR 一键对接脚本 v2.0"
 echo  " "
 echo  " "
 echo  "————————————————————————"
