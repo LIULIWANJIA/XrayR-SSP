@@ -97,10 +97,10 @@ install_XrayR() {
     echo ""
     echo "请先设定对接Key"
     echo ""
-    read -p "请输入对接Key:" api_hey
-    [ -z "${api_hey}" ]
+    read -p "请输入对接Key:" api_key
+    [ -z "${api_key}" ]
     echo "---------------------------"
-    echo "您设定的对接Key为 ${api_hey}"
+    echo "您设定的对接Key为 ${api_key}"
     echo "---------------------------"
     echo ""
     echo "请设定节点ID"
@@ -218,10 +218,10 @@ update_XrayR(){
     echo ""
     echo "请先设定对接Key"
     echo ""
-    read -p "请输入对接Key:" api_hey
-    [ -z "${api_hey}" ]
+    read -p "请输入对接Key:" api_key
+    [ -z "${api_key}" ]
     echo "---------------------------"
-    echo "您设定的对接Key为 ${api_hey}"
+    echo "您设定的对接Key为 ${api_key}"
     echo "---------------------------"
     echo ""
     echo "请设定节点ID"
