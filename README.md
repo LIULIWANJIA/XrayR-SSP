@@ -3,11 +3,6 @@
 
 bash <(curl -Lso- https://raw.githubusercontent.com/LIULIWANJIA/XrayR-SSP/main/install.sh)
 
-如无curl
-可指令安装
-yum -y install curl
-或者
-apt-get -y install curl
 
 
 
